@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feliz Aniversário, Mãe!</title>
+
+  <!-- Meta Tags -->
+  <meta property="og:title" content="Feliz Aniversário" />
+  <meta property="og:description" content="Uma homenagem especial de aniversário 💖" />
+  <meta property="og:image" content="" />
+  <meta property="og:url" content="https://github.com/GustavoAstMariano" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="description" content="Feliz aniversário, mãe! Uma homenagem cheia de amor e carinho." />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.png" />
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+  <!-- Custom Styles -->
+  <style>
+    body {
+      font-family: 'Pacifico', cursive;
+      background: linear-gradient(-45deg, #ffe4e6, #fce7f3, #fff1f2, #fde2e4);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      overflow-x: hidden;
+    }
+
+    @keyframes gradientBG {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .particle {
+      position: fixed;
+      top: -50px;
+      animation: fall linear infinite;
+      z-index: 50;
+      pointer-events: none;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(100vh) rotate(360deg);
+      }
+    }
+
+    .balloon {
+      position: fixed;
+      bottom: -100px;
+      animation: rise linear infinite;
+      z-index: 40;
+    }
+
+    @keyframes rise {
+      to {
+        transform: translateY(-120vh);
+      }
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+      color: deeppink;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body class="relative">
+
+  <!-- Containers de Partículas -->
+  <div id="particles-container"></div>
+  <div id="balloons-container"></div>
+
+  <!-- Header -->
+  <header class="text-center py-8">
+    <h1 class="text-5xl text-pink-600 drop-shadow-lg">Feliz Aniversário, Mãe!</h1>
+    <p class="mt-4 text-xl text-pink-500">Que seu dia seja tão lindo quanto seu sorriso e tão especial quanto você é pra
+      mim!</p>
+  </header>
+
+  <!-- Carrossel -->
+  <div class="swiper w-11/12 md:w-2/3 mx-auto rounded-2xl shadow-lg">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide"><img src="imagens/foto1.png" class="w-full rounded-2xl" /></div>
+      <div class="swiper-slide"><img src="imagens/foto2.png" class="w-full rounded-2xl" /></div>
+      <div class="swiper-slide"><img src="imagens/foto3.png" class="w-full rounded-2xl" /></div>
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+
+  <!-- Botão de Música -->
+  <div class="flex justify-center mt-6">
+    <button id="musicButton"
+      class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-full shadow-lg transition">
+      ⏸️ Pausar Música
+    </button>
+  </div>
+
+  <audio id="bgMusic" src="musica/musica.mp3" autoplay loop></audio>
+
+  <!-- Mensagem Especial -->
+  <section class="text-center mt-10 px-6">
+    <h2 class="text-2xl text-pink-600 mb-4">💖 Uma Mensagem Especial 💖</h2>
+    <p class="text-lg text-pink-500 max-w-2xl mx-auto">
+      "Mãe, você é minha fonte de amor, luz e inspiração. Que este novo ciclo traga muita saúde, felicidade e
+      realizações. Te amo mais do que palavras podem expressar. Feliz aniversário!"
+    </p>
+  </section>
+
+  <!-- Footer -->
+  <footer class="mt-12 py-4 bg-pink-100 text-center text-pink-500 rounded-t-3xl shadow-inner">
+    <p>Feito com 💖 por <a href="https://github.com/GustavoAstMariano" target="_blank"
+        class="underline hover:text-pink-700">Gustavo Ast</a></p>
+  </footer>
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- Script Swiper -->
+  <script>
+    const swiper = new Swiper('.swiper', {
+      loop: true,
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: true
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+  </script>
+
+  <!-- Script Música -->
+  <script>
+    const music = document.getElementById('bgMusic');
+    const button = document.getElementById('musicButton');
+    let isPlaying = true;
+
+    button.addEventListener('click', () => {
+      if (isPlaying) {
+        music.pause();
+        button.textContent = '▶️ Tocar Música';
+      } else {
+        music.play();
+        button.textContent = '⏸️ Pausar Música';
+      }
+      isPlaying = !isPlaying;
+    });
+  </script>
+
+  <!-- Script Partículas (Corações, Estrelas, Brilhos, Flores) -->
+  <script>
+    const particlesContainer = document.getElementById('particles-container');
+    const emojis = ['💖', '🧡', '💜', '🩷', '🌸', '💮', '🌷', '🎁'];
+
+    function createParticle() {
+      const particle = document.createElement('div');
+      particle.classList.add('particle');
+      particle.style.left = Math.random() * 100 + 'vw';
+      particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+      particle.style.opacity = Math.random();
+      particle.style.fontSize = (Math.random() * 24 + 16) + 'px';
+      particle.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+
+      particlesContainer.appendChild(particle);
+
+      setTimeout(() => {
+        particle.remove();
+      }, 6000);
+    }
+
+    setInterval(createParticle, 100);
+  </script>
+
+</body>
+
+</html>
