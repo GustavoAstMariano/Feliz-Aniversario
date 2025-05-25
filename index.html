@@ -20,9 +20,6 @@
   <!-- Swiper CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
-  <!-- Favicon -->
-  <link rel="icon" href="favicon.png" />
-
   <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
@@ -114,11 +111,11 @@
   <div class="flex justify-center mt-6">
     <button id="musicButton"
       class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-full shadow-lg transition">
-      ⏸️ Pausar Música
+      ▶️ Tocar Música
     </button>
   </div>
 
-  <audio id="bgMusic" src="musica/musica.mp3" autoplay loop></audio>
+  <audio id="bgMusic" src="musica/musica.mp3"></audio>
 
   <!-- Mensagem Especial -->
   <section class="text-center mt-10 px-6">
@@ -157,8 +154,7 @@
   <script>
     const music = document.getElementById('bgMusic');
     const button = document.getElementById('musicButton');
-    let isPlaying = true;
-
+    let isPlaying = false;
     button.addEventListener('click', () => {
       if (isPlaying) {
         music.pause();
